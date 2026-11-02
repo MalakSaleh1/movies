@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../data/models/movie.dart';
 import 'movie_card.dart';
 
-/// Grid الأفلام: بيتستخدم في Browse و Search و Watch List و History.
 class MoviesGrid extends StatelessWidget {
   final List<Movie> movies;
   final int crossAxisCount;

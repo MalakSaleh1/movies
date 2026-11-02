@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors/app_colors.dart';
 import '../../../../core/widgets/confirm_sheet.dart';
 
-/// تأكيد حذف الحساب. بترجّع الباسورد (String) لو أكّد، أو null لو لغى.
-/// لو الحساب جوجول ([needsPassword] = false) بترجّع string فاضي.
 class DeleteAccountSheet extends StatefulWidget {
   final bool needsPassword;
   const DeleteAccountSheet({super.key, required this.needsPassword});

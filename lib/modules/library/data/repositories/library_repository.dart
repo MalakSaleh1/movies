@@ -4,8 +4,6 @@ import '../../../movies/data/models/movie.dart';
 import '../data_sources/library_local_data_source.dart';
 import '../data_sources/library_remote_data_source.dart';
 
-/// الـ Watch List والـ History: Firestore هو المصدر الأساسي،
-/// والكاش المحلي بيخلي الشاشة تظهر فوراً (حتى أوفلاين).
 class LibraryRepository {
   LibraryRepository({
     required LibraryRemoteDataSource remote,
@@ -17,8 +15,6 @@ class LibraryRepository {
   final LibraryLocalDataSource _local;
 
   String? get _uid => FirebaseAuth.instance.currentUser?.uid;
-
-  // ---- الكاش ----
 
   List<Movie> cachedWishlist() {
     final uid = _uid;
@@ -40,7 +36,6 @@ class LibraryRepository {
     if (uid != null) await _local.saveHistory(uid, movies);
   }
 
-  // ---- من Firestore (وبنحدّث الكاش) ----
 
   Future<List<Movie>> fetchWishlist() async {
     final uid = _uid;
@@ -73,7 +68,6 @@ class LibraryRepository {
     if (uid != null) await _remote.addToHistory(uid, movie);
   }
 
-  // ---- تنظيف ----
 
   Future<void> deleteRemote(String uid) => _remote.deleteAll(uid);
 

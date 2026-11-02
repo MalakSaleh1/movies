@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/user_profile.dart';
 
-/// users/{uid} → name, email, phone, avatar, createdAt
 class UserRemoteDataSource {
   UserRemoteDataSource(this._db);
 
@@ -11,7 +10,6 @@ class UserRemoteDataSource {
   DocumentReference<Map<String, dynamic>> _doc(String uid) =>
       _db.collection('users').doc(uid);
 
-  /// بيتنده عند إنشاء الحساب
   Future<void> create(String uid, UserProfile profile) {
     return _doc(uid).set({
       ...profile.toMap(),
@@ -19,7 +17,6 @@ class UserRemoteDataSource {
     });
   }
 
-  /// بيكتب الوثيقة لو مش موجودة بس (جوجول / الحسابات القديمة).
   Future<void> createIfNew(String uid, UserProfile profile) async {
     final ref = _doc(uid);
     final snap = await ref.get();

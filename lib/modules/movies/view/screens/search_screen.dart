@@ -45,7 +45,6 @@ class _SearchScreenState extends State<SearchScreen> {
             child: search.query.isEmpty && search.state.data == null
                 ? const EmptyState()
                 : AsyncView<List<Movie>>(
-                    // أثناء الـ loading بنعرض loader بدل النتايج القديمة
                     state: search.state.isLoading
                         ? const AsyncState<List<Movie>>.loading()
                         : search.state,

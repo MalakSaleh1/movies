@@ -2,7 +2,6 @@ import '../../../../core/error/app_exception.dart';
 import '../../../../core/network/api_client.dart';
 import '../models/movie.dart';
 
-/// بيكلّم الـ API بس. مفيش كاش ولا منطق هنا.
 class MoviesRemoteDataSource {
   MoviesRemoteDataSource(this._api);
 
@@ -10,7 +9,6 @@ class MoviesRemoteDataSource {
 
   final ApiClient _api;
 
-  /// بيعمل GET ويرجّع الـ `data` بعد ما يتأكد إن status == ok
   Future<Map<String, dynamic>> _getData(
     String endpoint,
     Map<String, String> params,
@@ -32,7 +30,6 @@ class MoviesRemoteDataSource {
         .toList();
   }
 
-  /// قائمة الأفلام (مع فلترة بالنوع والترتيب)
   Future<List<Movie>> listMovies({
     String? genre,
     String? query,
@@ -50,7 +47,6 @@ class MoviesRemoteDataSource {
     return _parseMovies(data);
   }
 
-  /// تفاصيل فيلم (مع الصور والـ cast)
   Future<Movie> movieDetails(int id) async {
     final data = await _getData('movie_details', {
       'movie_id': '$id',
@@ -60,7 +56,6 @@ class MoviesRemoteDataSource {
     return Movie.fromJson(data['movie'] as Map<String, dynamic>);
   }
 
-  /// أفلام مشابهة (بترجع 4 أفلام)
   Future<List<Movie>> suggestions(int id) async {
     final data = await _getData('movie_suggestions', {'movie_id': '$id'});
     return _parseMovies(data);

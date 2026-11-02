@@ -11,7 +11,6 @@ class UserProfile {
     required this.avatar,
   });
 
-  /// من وثيقة Firestore أو من الكاش (نفس المفاتيح).
   factory UserProfile.fromMap(Map<String, dynamic> map) => UserProfile(
         name: (map['name'] ?? '') as String,
         email: (map['email'] ?? '') as String,

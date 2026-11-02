@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors/app_colors.dart';
 
-/// صورة من النت مع كاش على الديسك (بتفضل بعد قفل التطبيق).
 class AppImage extends StatelessWidget {
   final String url;
   final double? width;

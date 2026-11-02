@@ -1,4 +1,4 @@
-/// Exception موحّدة بتحمل رسالة تتعرض للمستخدم مباشرة.
+
 class AppException implements Exception {
   final String message;
   const AppException(this.message);
@@ -7,7 +7,6 @@ class AppException implements Exception {
   String toString() => message;
 }
 
-/// بتحوّل أي error لرسالة نظيفة للعرض.
 String errorMessage(Object? error) {
   if (error == null) return 'Something went wrong';
   if (error is AppException) return error.message;

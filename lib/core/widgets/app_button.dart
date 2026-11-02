@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// زر عريض مدور مع loading (بيستخدم في الـ Profile وممكن في أي مكان).
 class AppButton extends StatelessWidget {
   final String label;
   final Color color;

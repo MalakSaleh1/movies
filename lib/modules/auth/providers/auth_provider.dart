@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import '../../../core/error/app_exception.dart';
 import '../../../core/state/safe_notifier.dart';
 import '../data/repositories/auth_repository.dart';
-
-/// state الـ Auth (loading + المستخدم الحالي + آخر رسالة خطأ).
-/// الـ Provider مبقاش بيعرض Snackbars: الشاشة هي اللي بتعرض الرسالة.
 class AppAuthProvider extends ChangeNotifier with SafeNotifier {
   AppAuthProvider(this._repo) : user = _repo.currentUser;
 
@@ -20,7 +17,6 @@ class AppAuthProvider extends ChangeNotifier with SafeNotifier {
 
   bool get isPasswordUser => _repo.isPasswordUser;
 
-  /// بينفّذ [action] مع إدارة الـ loading والـ error. بيرجّع true لو نجح.
   Future<bool> _run(
     Future<void> Function() action, {
     bool google = false,

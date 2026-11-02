@@ -5,8 +5,7 @@ import 'app_loading.dart';
 import 'empty_state.dart';
 import 'error_retry_view.dart';
 
-/// بيعرض [AsyncState] بشكل موحّد: loading / error+retry / empty / الداتا.
-/// لو في داتا قديمة (من refresh) بيعرضها بدل الـ loader أو الـ error.
+
 class AsyncView<T> extends StatelessWidget {
   final AsyncState<T> state;
   final Widget Function(BuildContext context, T data) builder;

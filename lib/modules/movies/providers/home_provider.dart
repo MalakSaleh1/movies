@@ -6,7 +6,6 @@ import '../../../core/state/safe_notifier.dart';
 import '../data/models/movie.dart';
 import '../data/repositories/movies_repository.dart';
 
-/// state الشاشة الرئيسية: الأفلام المميزة + قسم لكل نوع (بيتحمل لما يظهر).
 class HomeProvider extends ChangeNotifier with SafeNotifier {
   HomeProvider(this._repo);
 
@@ -57,7 +56,6 @@ class HomeProvider extends ChangeNotifier with SafeNotifier {
     notifyListeners();
   }
 
-  /// Pull-to-refresh: بيحدّث المميزة والأقسام اللي اتحملت فعلاً.
   Future<void> refresh() async {
     final loaded = _genres.keys.toList();
     await Future.wait([

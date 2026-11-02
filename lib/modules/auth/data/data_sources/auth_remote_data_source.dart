@@ -4,8 +4,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/error/app_exception.dart';
 
-/// بيكلّم Firebase Auth و Google Sign-In بس.
-/// أي خطأ بيتحوّل لـ [AppException] برسالة جاهزة للعرض.
 class AuthRemoteDataSource {
   AuthRemoteDataSource({FirebaseAuth? auth})
       : _auth = auth ?? FirebaseAuth.instance;
@@ -14,7 +12,6 @@ class AuthRemoteDataSource {
 
   User? get currentUser => _auth.currentUser;
 
-  /// true لو الحساب بإيميل وباسورد (محتاج الباسورد لإعادة التحقق).
   bool get isPasswordUser =>
       _auth.currentUser?.providerData.any((p) => p.providerId == 'password') ??
       false;
@@ -117,7 +114,6 @@ class AuthRemoteDataSource {
     await user.reload();
   }
 
-  /// إعادة تحقق (مطلوبة قبل حذف الحساب).
   Future<void> reauthenticate({String? password}) async {
     final user = _auth.currentUser;
     if (user == null) throw const AppException('No user is signed in');

@@ -37,7 +37,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     _phoneController = TextEditingController();
     _avatar = AppAvatars.all.first;
 
-    // الداتا بتيجي من الكاش فوراً، فمفيش انتظار
     _fill(profileProvider.profile);
     if (profileProvider.profile == null) {
       profileProvider.load().then((_) {

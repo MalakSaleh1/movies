@@ -2,10 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../../movies/data/models/movie.dart';
 
-/// الهيكل في Firestore:
-/// users/{uid}
-///   ├─ wishlist/{movieId} → بيانات الفيلم + addedAt
-///   └─ history/{movieId}  → بيانات الفيلم + viewedAt
 class LibraryRemoteDataSource {
   LibraryRemoteDataSource(this._db);
 
@@ -32,7 +28,6 @@ class LibraryRemoteDataSource {
   Future<void> removeFromWishlist(String uid, int movieId) =>
       _userDoc(uid).collection(wishlistCollection).doc('$movieId').delete();
 
-  /// بيمسح الـ wishlist والـ history كلهم (عند حذف الحساب).
   Future<void> deleteAll(String uid) async {
     for (final name in [wishlistCollection, historyCollection]) {
       final snap = await _userDoc(uid).collection(name).get();

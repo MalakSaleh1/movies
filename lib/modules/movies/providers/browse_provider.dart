@@ -7,8 +7,6 @@ import '../../../core/state/safe_notifier.dart';
 import '../data/models/movie.dart';
 import '../data/repositories/movies_repository.dart';
 
-/// state شاشة الـ Browse. بيتعمل لكل شاشة (مش global) عشان الـ Browse
-/// اللي بتتفتح من "See More" ما تأثرش على التاب.
 class BrowseProvider extends ChangeNotifier with SafeNotifier {
   BrowseProvider(this._repo, {int initialIndex = 0})
       : selectedIndex = initialIndex;

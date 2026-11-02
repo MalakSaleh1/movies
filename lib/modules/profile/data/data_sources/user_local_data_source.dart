@@ -4,7 +4,6 @@ import '../../../../core/cache/cache_policy.dart';
 import '../../../../core/cache/cache_service.dart';
 import '../models/user_profile.dart';
 
-/// كاش بيانات المستخدم (الاسم والصورة والموبايل) على الجهاز.
 class UserLocalDataSource {
   UserLocalDataSource(this._cache);
 

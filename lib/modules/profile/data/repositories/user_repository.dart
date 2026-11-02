@@ -16,13 +16,11 @@ class UserRepository {
 
   String? get _uid => FirebaseAuth.instance.currentUser?.uid;
 
-  /// آخر بيانات محفوظة على الجهاز (فورية).
   UserProfile? cachedProfile() {
     final uid = _uid;
     return uid == null ? null : _local.get(uid);
   }
 
-  /// من Firestore (وبنحدّث الكاش).
   Future<UserProfile?> fetchProfile() async {
     final uid = _uid;
     if (uid == null) return null;
@@ -36,7 +34,6 @@ class UserRepository {
     await _local.save(uid, profile);
   }
 
-  /// بعد تسجيل الدخول: بيتأكد إن وثيقة المستخدم موجودة.
   Future<void> ensureProfile(User user, {required String avatar}) async {
     final profile = UserProfile(
       name: user.displayName ?? '',

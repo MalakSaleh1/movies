@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../theme/app_colors/app_colors.dart';
 import 'app_image.dart';
 
-/// صورة المستخدم: asset محلي أو رابط (زي صورة جوجل).
 class UserAvatar extends StatelessWidget {
   final String path;
   final double size;

@@ -89,7 +89,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // زرار Verify Email
                 SizedBox(
                   width: double.infinity,
                   height: 56,

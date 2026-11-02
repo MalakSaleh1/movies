@@ -130,7 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // زرار Login
                 SizedBox(
                   width: double.infinity,
                   height: 56,
@@ -190,7 +189,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // OR
                 Row(
                   children: [
                     Expanded(
@@ -212,7 +210,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // زرار Login With Google
                 SizedBox(
                   width: double.infinity,
                   height: 56,

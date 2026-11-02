@@ -12,7 +12,6 @@ class MovieDetailsData {
   const MovieDetailsData(this.movie, this.similar);
 }
 
-/// state شاشة تفاصيل فيلم واحد (بيتعمل لكل شاشة).
 class MovieDetailsProvider extends ChangeNotifier with SafeNotifier {
   MovieDetailsProvider(
     this._repo,
@@ -23,7 +22,6 @@ class MovieDetailsProvider extends ChangeNotifier with SafeNotifier {
   final MoviesRepository _repo;
   final int movieId;
 
-  /// بيتنده لما التفاصيل تتحمل (بنستخدمه لتسجيل الفيلم في الـ History).
   final void Function(Movie movie)? onLoaded;
 
   AsyncState<MovieDetailsData> state = const AsyncState.initial();
@@ -35,7 +33,6 @@ class MovieDetailsProvider extends ChangeNotifier with SafeNotifier {
     try {
       final (movie, similar) = await (
         _repo.getMovieDetails(movieId, forceRefresh: force),
-        // الأفلام المشابهة اختيارية: لو فشلت منعطّلش الشاشة
         _repo
             .getSuggestions(movieId, forceRefresh: force)
             .catchError((_) => <Movie>[]),

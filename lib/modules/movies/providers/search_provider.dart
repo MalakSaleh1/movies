@@ -14,7 +14,7 @@ class SearchProvider extends ChangeNotifier with SafeNotifier {
   final MoviesRepository _repo;
 
   Timer? _debounce;
-  int _token = 0; // عشان نتجاهل نتايج الطلبات القديمة
+  int _token = 0;
 
   String query = '';
   AsyncState<List<Movie>> state = const AsyncState.initial();

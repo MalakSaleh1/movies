@@ -10,8 +10,6 @@ import '../../auth/data/repositories/auth_repository.dart';
 import '../data/models/user_profile.dart';
 import '../data/repositories/user_repository.dart';
 
-/// بيانات المستخدم (الاسم / الصورة / الموبايل).
-/// بتظهر من الكاش فوراً وبعدين بتتحدث من Firestore.
 class ProfileProvider extends ChangeNotifier with SafeNotifier {
   ProfileProvider(this._userRepo, this._authRepo) {
     _authSub = FirebaseAuth.instance.authStateChanges().listen((user) {
@@ -55,7 +53,6 @@ class ProfileProvider extends ChangeNotifier with SafeNotifier {
     notifyListeners();
   }
 
-  /// بيرجّع true لو الحفظ نجح، وإلا بيحط الرسالة في [error].
   Future<bool> update({
     required String name,
     required String avatar,
@@ -67,8 +64,6 @@ class ProfileProvider extends ChangeNotifier with SafeNotifier {
 
     var ok = false;
     try {
-      // Do not start either Firebase update while the device is offline.
-      // This keeps the profile update atomic from the user's perspective.
       if (!await NetworkInfo.isConnected) {
         throw const AppException('No internet connection.');
       }

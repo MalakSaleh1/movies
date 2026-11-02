@@ -1,6 +1,5 @@
 enum LoadStatus { initial, loading, success, error }
 
-/// حالة تحميل داتا (loading / success / error) مع الاحتفاظ بآخر داتا اتحملت.
 class AsyncState<T> {
   final LoadStatus status;
   final T? data;
@@ -10,7 +9,6 @@ class AsyncState<T> {
 
   const AsyncState.initial() : this._(LoadStatus.initial, null, null);
 
-  /// [previous] بيخلي الشاشة تفضل عارضة الداتا القديمة أثناء الـ refresh.
   const AsyncState.loading({T? previous})
       : this._(LoadStatus.loading, previous, null);
 

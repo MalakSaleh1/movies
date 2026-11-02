@@ -7,8 +7,6 @@ import '../../../core/state/safe_notifier.dart';
 import '../../movies/data/models/movie.dart';
 import '../data/repositories/library_repository.dart';
 
-/// الـ Watch List والـ History.
-/// بيعرض الكاش المحلي فوراً وبعدين بيحدّث من Firestore.
 class LibraryProvider extends ChangeNotifier with SafeNotifier {
   LibraryProvider(this._repo) {
     _authSub = FirebaseAuth.instance.authStateChanges().listen((user) {
@@ -37,14 +35,12 @@ class LibraryProvider extends ChangeNotifier with SafeNotifier {
   Future<void> load() async {
     if (FirebaseAuth.instance.currentUser == null) return;
 
-    // 1) الكاش المحلي (فوري)
     final cachedWishlist = _repo.cachedWishlist();
     final cachedHistory = _repo.cachedHistory();
     if (cachedWishlist.isNotEmpty || cachedHistory.isNotEmpty) {
       _replace(cachedWishlist, cachedHistory);
     }
 
-    // 2) تحديث من Firestore
     isLoading = true;
     lastError = null;
     notifyListeners();
@@ -100,7 +96,6 @@ class LibraryProvider extends ChangeNotifier with SafeNotifier {
     } catch (e) {
       lastError = e.toString();
       debugPrint('WISHLIST WRITE FAILED: $e');
-      // rollback
       if (added) {
         _wishlist.removeWhere((m) => m.id == movie.id);
       } else {

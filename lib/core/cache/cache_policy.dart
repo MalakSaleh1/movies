@@ -1,5 +1,4 @@
-/// مدد صلاحية الكاش. بعد انتهاءها بنحاول نجيب من النت،
-/// ولو النت فاشل بنرجع للكاش القديم.
+
 class CachePolicy {
   CachePolicy._();
 
@@ -9,6 +8,6 @@ class CachePolicy {
   static const Duration suggestions = Duration(hours: 24);
   static const Duration userProfile = Duration(hours: 12);
 
-  /// أقصى عدد نتايج بحث محفوظة.
+
   static const int maxSearchEntries = 20;
 }

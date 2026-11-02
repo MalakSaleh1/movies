@@ -10,7 +10,6 @@ import '../movie_navigation.dart';
 import '../screens/browse_screen.dart';
 import 'movie_card.dart';
 
-/// قسم أفلام نوع معين في الشاشة الرئيسية. بيحمّل نفسه أول ما يظهر.
 class GenreSection extends StatefulWidget {
   final String genre;
   final int genreIndex;

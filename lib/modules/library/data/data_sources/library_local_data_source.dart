@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import '../../../../core/cache/cache_service.dart';
 import '../../../movies/data/models/movie.dart';
 
-/// كاش الـ Watch List والـ History لكل مستخدم (بيفضل بعد قفل التطبيق).
 class LibraryLocalDataSource {
   LibraryLocalDataSource(this._cache);
 

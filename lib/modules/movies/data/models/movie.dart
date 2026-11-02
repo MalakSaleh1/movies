@@ -9,9 +9,9 @@ class Movie {
   final int likeCount;
   final List<String> genres;
   final String summary;
-  final String coverImage; // للكروت الصغيرة
+  final String coverImage;
   final String largeCoverImage;
-  final String backgroundImage; // لهيدر شاشة التفاصيل
+  final String backgroundImage;
   final List<String> screenshots;
   final List<CastMember> cast;
 
@@ -31,13 +31,11 @@ class Movie {
     required this.cast,
   });
 
-  /// من الـ API
   factory Movie.fromJson(Map<String, dynamic> json) {
     String str(String key) => (json[key] ?? '') as String;
 
     final fullDescription = str('description_full');
 
-    // لقطات الشاشة (بتيجي لما نبعت with_images=true)
     final shots = <String>[];
     for (var i = 1; i <= 3; i++) {
       final url = str('large_screenshot_image$i');
@@ -59,14 +57,12 @@ class Movie {
           ? str('background_image_original')
           : str('background_image'),
       screenshots: shots,
-      // بتيجي لما نبعت with_cast=true
       cast: ((json['cast'] as List?) ?? [])
           .map((e) => CastMember.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }
 
-  /// للكاش المحلي: كل الحقول (عشان شاشة التفاصيل تشتغل أوفلاين).
   factory Movie.fromCache(Map<String, dynamic> json) => Movie(
         id: json['id'] as int,
         title: (json['title'] ?? '') as String,
@@ -101,7 +97,6 @@ class Movie {
         'cast': cast.map((c) => c.toJson()).toList(),
       };
 
-  /// الحقول اللي بنخزنها في Firestore / كاش المكتبة (اللي الـ grid محتاجها بس)
   Map<String, dynamic> toMap() => {
         'id': id,
         'title': title,
@@ -116,7 +111,6 @@ class Movie {
         year: (map['year'] as num?)?.toInt() ?? 0,
         rating: (map['rating'] as num?)?.toDouble() ?? 0,
         coverImage: (map['coverImage'] ?? '') as String,
-        // باقي الحقول بتتحمل من الـ API في شاشة التفاصيل
         runtime: 0,
         likeCount: 0,
         genres: const [],

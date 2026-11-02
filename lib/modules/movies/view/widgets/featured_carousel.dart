@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../data/models/movie.dart';
 import 'movie_card.dart';
 
-/// الكاروسيل الكبير في أعلى الشاشة الرئيسية.
+
 class FeaturedCarousel extends StatelessWidget {
   final PageController controller;
   final List<Movie> movies;

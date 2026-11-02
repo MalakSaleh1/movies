@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-/// Checks whether the device can reach the internet.
-///
-/// This is intentionally kept small and package-free so it does not change
-/// the existing dependency set of the app.
 class NetworkInfo {
   NetworkInfo._();
 

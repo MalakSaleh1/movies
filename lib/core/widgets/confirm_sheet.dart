@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_colors/app_colors.dart';
 
-/// Bottom sheet تأكيد عايمة (بتستخدم في الخروج وحذف الحساب).
-/// [extra] مكان لأي محتوى إضافي (زي خانة الباسورد).
 class ConfirmSheet extends StatelessWidget {
   final IconData icon;
   final Color? iconColor;
@@ -33,7 +31,6 @@ class ConfirmSheet extends StatelessWidget {
     final accent = confirmColor ?? AppColors.red;
 
     return Padding(
-      // عشان الكيبورد ما يغطيش الـ sheet
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         margin: EdgeInsets.fromLTRB(
@@ -108,7 +105,6 @@ class ConfirmSheet extends StatelessWidget {
   }
 }
 
-/// بيفتح [ConfirmSheet] ويرجّع true لو المستخدم أكّد.
 Future<bool> showConfirmSheet(
   BuildContext context, {
   required IconData icon,

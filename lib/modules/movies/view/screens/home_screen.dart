@@ -96,7 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-/// الخلفية: غلاف الفيلم الحالي مغبّش + تدرج للأسود.
 class _Backdrop extends StatelessWidget {
   final Movie movie;
   const _Backdrop({required this.movie});

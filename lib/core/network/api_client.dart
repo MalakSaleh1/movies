@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 
 import '../error/app_exception.dart';
 
-/// Client بسيط للـ HTTP: بيعمل GET ويحوّل الأخطاء لـ [AppException].
 class ApiClient {
   ApiClient({
     http.Client? client,

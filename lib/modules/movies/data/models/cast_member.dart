@@ -9,14 +9,12 @@ class CastMember {
     required this.image,
   });
 
-  /// من الـ API
   factory CastMember.fromJson(Map<String, dynamic> json) => CastMember(
         name: (json['name'] ?? '') as String,
         character: (json['character_name'] ?? '') as String,
         image: (json['url_small_image'] ?? '') as String,
       );
 
-  /// للكاش المحلي
   factory CastMember.fromCache(Map<String, dynamic> json) => CastMember(
         name: (json['name'] ?? '') as String,
         character: (json['character'] ?? '') as String,

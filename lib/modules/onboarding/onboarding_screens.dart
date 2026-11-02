@@ -14,13 +14,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
 
-  // اللون السائد لكل صورة (عدّله لو عايز درجة تانية)
   final List<Color> _gradientColors = const [
     Color(0xFF601321),
-    Color(0xff084250), // Avengers - أزرق مخضر
-    Color(0xFF85210E), // Oppenheimer - برتقالي غامق
-    Color(0xFF4C2471), // Bad Boys - بنفسجي
-    Color(0xFF2A2C30), // 1917 - رمادي
+    Color(0xff084250),
+    Color(0xFF85210E),
+    Color(0xFF4C2471),
+    Color(0xFF2A2C30),
   ];
 
   final List<Map<String, String>> _pages = const [
@@ -165,7 +164,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ],
                       const SizedBox(height: 24),
 
-                      // زرار Next / Finish
                       SizedBox(
                         width: double.infinity,
                         height: 56,

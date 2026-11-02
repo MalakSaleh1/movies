@@ -1,9 +1,4 @@
-/// استراتيجية "الكاش الأول":
-/// 1) لو في كاش لسه صالح (أحدث من [ttl]) نرجّعه من غير ما نروح للنت.
-/// 2) غير كده نجيب من المصدر الأصلي ونحدّث الكاش.
-/// 3) لو المصدر فشل (مفيش نت مثلاً) نرجّع آخر كاش حتى لو قديم.
-///
-/// [forceRefresh] بيتخطى الخطوة 1 (للـ pull-to-refresh والـ retry).
+
 Future<T> cachedFetch<T>({
   required T? Function(Duration? maxAge) readCache,
   required Future<T> Function() fetch,

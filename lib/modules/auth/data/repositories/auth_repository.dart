@@ -6,8 +6,6 @@ import '../../../profile/data/models/user_profile.dart';
 import '../../../profile/data/repositories/user_repository.dart';
 import '../data_sources/auth_remote_data_source.dart';
 
-/// بيربط الـ Auth بباقي البيانات: إنشاء وثيقة المستخدم بعد الدخول،
-/// وتنظيف الكاش والـ Firestore عند الخروج أو حذف الحساب.
 class AuthRepository {
   AuthRepository({
     required AuthRemoteDataSource remote,
@@ -74,14 +72,12 @@ class AuthRepository {
     if (uid != null) await _clearLocal(uid);
   }
 
-  /// 1) إعادة تحقق  2) مسح بيانات Firestore  3) حذف الحساب  4) مسح الكاش
   Future<void> deleteAccount({String? password}) async {
     final uid = _remote.currentUser?.uid;
     if (uid == null) throw Exception('No user is signed in');
 
     await _remote.reauthenticate(password: password);
 
-    // لازم قبل حذف الحساب عشان الـ rules محتاجة المستخدم لسه مسجل
     await _libraryRepo.deleteRemote(uid);
     await _userRepo.deleteRemote(uid);
 
@@ -90,7 +86,6 @@ class AuthRepository {
     await _clearLocal(uid);
   }
 
-  /// بنحاول ننشئ وثيقة المستخدم لو ناقصة (الحسابات القديمة / جوجول).
   Future<void> _ensureProfile(User? user) async {
     if (user == null) return;
     try {

@@ -9,10 +9,6 @@ class _Entry {
   const _Entry(this.data, this.savedAt);
 }
 
-/// كاش key/value بيفضل بعد قفل التطبيق (SharedPreferences) ومعاه طبقة
-/// في الذاكرة عشان القراءة المتكررة تبقى فورية.
-///
-/// الداتا لازم تكون JSON-friendly (Map / List / String / num / bool).
 class CacheService {
   CacheService._(this._prefs);
 
@@ -40,7 +36,6 @@ class CacheService {
     }
   }
 
-  /// بترجّع الداتا لو موجودة (وغير منتهية لو [maxAge] اتحدد)، وإلا null.
   T? read<T>(String key, {Duration? maxAge}) {
     final entry = _entry(key);
     if (entry == null) return null;
@@ -70,7 +65,7 @@ class CacheService {
       _memory[key] = entry;
       return entry;
     } catch (_) {
-      // كاش تالف: نمسحه ونكمل كأنه مش موجود
+
       _prefs.remove(_k(key));
       return null;
     }
@@ -90,7 +85,6 @@ class CacheService {
     }
   }
 
-  /// بيسيب أحدث [maxEntries] بس من الـ keys اللي بتبدأ بـ [prefix].
   Future<void> prune(String prefix, {required int maxEntries}) async {
     final full = _k(prefix);
     final keys = _prefs

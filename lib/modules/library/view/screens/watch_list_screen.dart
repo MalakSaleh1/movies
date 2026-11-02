@@ -6,7 +6,6 @@ import '../../../movies/view/movie_navigation.dart';
 import '../../../movies/view/widgets/movies_grid.dart';
 import '../../providers/library_provider.dart';
 
-/// تاب الـ Watch List: الأفلام اللي عملتلها bookmark
 class WatchListScreen extends StatelessWidget {
   const WatchListScreen({super.key});
 

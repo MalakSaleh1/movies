@@ -4,7 +4,6 @@ import '../../../../core/cache/cache_policy.dart';
 import '../../../../core/cache/cache_service.dart';
 import '../models/movie.dart';
 
-/// كاش الأفلام على الجهاز (بيفضل بعد قفل التطبيق).
 class MoviesLocalDataSource {
   MoviesLocalDataSource(this._cache);
 
@@ -15,7 +14,6 @@ class MoviesLocalDataSource {
 
   final CacheService _cache;
 
-  // ---- قوائم الأفلام (home / browse / search) ----
 
   List<Movie>? getMovies(String key, {Duration? maxAge}) {
     final raw = _cache.read<List<dynamic>>(key, maxAge: maxAge);
@@ -45,7 +43,6 @@ class MoviesLocalDataSource {
     }
   }
 
-  // ---- تفاصيل فيلم ----
 
   Movie? getDetails(int id, {Duration? maxAge}) {
     final key = '$_detailsPrefix$id';
@@ -63,7 +60,6 @@ class MoviesLocalDataSource {
   Future<void> saveDetails(Movie movie) =>
       _cache.write('$_detailsPrefix${movie.id}', movie.toJson());
 
-  // ---- أفلام مشابهة ----
 
   List<Movie>? getSuggestions(int id, {Duration? maxAge}) =>
       getMovies('$_suggestionsPrefix$id', maxAge: maxAge);
